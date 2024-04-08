@@ -1,0 +1,197 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.fall-exam-strip {
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  padding: 30px 0;
+  font-weight: bold;
+  position: fixed;
+  bottom: 15%;
+  z-index: 1000;
+}
+
+.fall-exam-strip p {
+  margin: 0;
+}
+
+.carousel-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.carousel-slider {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item {
+  flex: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background-color: #FF5733;
+  transition: flex 0.5s ease, background-color 0.5s ease; /* Add transition for background color */
+  margin: 0;
+  /* border-radius: 10px; Add rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  overflow: hidden; /* Hide overflow content */
+  position: relative; /* Ensure domain text positioning */
+}
+
+.carousel-item .content {
+  max-width: 90%; /* Limit maximum width of content */
+  text-align: center; /* Center align text */
+}
+
+.card-hover {
+  display: none; /* Initially hide hover content */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.heading {
+  font-weight: bold;
+  color: black;
+  text-shadow: 0 0 10px #FF5733; /* Add glowing effect */
+}
+
+.description {
+  font-size: 16px;
+  color: black;
+  word-wrap: break-word; /* Allow long words to break and wrap onto the next line */
+  overflow-wrap: break-word; /* Ensure compatibility with older browsers */
+  white-space: normal; /* Allow text to wrap */
+  opacity: 0; /* Initially hide the description */
+  transition: opacity 0.5s; /* Add transition effect */
+}
+
+.carousel-item:hover .description {
+  opacity: 1; /* Show description on hover */
+}
+
+.carousel-item:hover .card-hover {
+  display: block; /* Show hover content on hover */
+}
+
+
+.carousel-item:nth-child(2) {
+  background-color: #3498DB;
+}
+
+.carousel-item:nth-child(3) {
+  background-color: #27AE60;
+}
+
+.carousel-item:nth-child(4) {
+  background-color: #F1C40F;
+}
+
+.carousel-item:nth-child(5) {
+  background-color: #8E44AD;
+}
+
+.carousel-slider:hover .carousel-item:not(:hover) {
+  flex: 0.5;
+}
+
+.domain {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px; /* Increase font size */
+  font-weight: bold; /* Make it bold */
+  color: white;
+  opacity: 0.7;
+  word-wrap: break-word; /* Allow long words to break and wrap onto the next line */
+  overflow-wrap: break-word; /* Ensure compatibility with older browsers */
+  white-space: normal; /* Allow text to wrap */
+}
+
+.carousel-item:hover {
+  flex: 2;
+  background-color: #E74C3C;
+  background-image: linear-gradient(45deg, #FFC300, #FF5733);
+  animation: pulsate 0.5s infinite alternate, glow 1s infinite alternate, bounce 0.5s, falsh 2s;
+  /* transform: scale(1.1) rotate(5deg); */
+  border: 3px solid transparent;
+  opacity: 0.8;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+  z-index: 2; /* Ensure the hovered card is above others */
+}
+
+.carousel-item:hover ~ .carousel-item {
+  flex: 0.5;
+  z-index: 1; /* Ensure other cards are below the hovered card */
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes flash {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    filter: brightness(100%);
+    box-shadow: 0 0 10px rgba(255, 87, 51, 0.3), 0 0 20px rgba(255, 87, 51, 0.2);
+    background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(110%);
+    box-shadow: 0 0 15px rgba(255, 87, 51, 0.5), 0 0 25px rgba(255, 87, 51, 0.3);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(100%);
+    box-shadow: 0 0 10px rgba(255, 87, 51, 0.3), 0 0 20px rgba(255, 87, 51, 0.2);
+    background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+}
